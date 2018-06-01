@@ -19,3 +19,15 @@ Route::get('/about','pagesController@about' );
 Route::get('/','pagesController@index' );
 
 Route::get('/prolanguage','pagesController@prolanguage' );
+
+Route::resource('posts','postsController' );
+
+
+Route::post('/' , 'PostsController@store' );
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
