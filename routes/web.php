@@ -20,7 +20,7 @@ Route::get('/','pagesController@index' );
 
 Route::get('/prolanguage','pagesController@prolanguage' );
 
-Route::resource('posts','postsController' );
+Route::resource('posts','PostsController' );
 
 
 Route::post('/' , 'PostsController@store' );
