@@ -104,7 +104,7 @@ return [
     |
     */
 
-    'key' => env('base64:pfbna4N/KorgElL0o5RgXNiTf6xcyqrTliTwHAjuwrU='),
+    'key' => 'base64:pfbna4N/KorgElL0o5RgXNiTf6xcyqrTliTwHAjuwrU=',
 
     'cipher' => 'AES-256-CBC',
 
