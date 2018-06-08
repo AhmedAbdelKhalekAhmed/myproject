@@ -17,7 +17,8 @@
   <div class="card-header"><h3>{{$post->firstname}} {{$post->lastname}}</h3></div>
   <div class="card-body">
     <h2 class="card-title">{{$post->subject}}</h2>
-    <span class="badge badge-danger">created at: {{$post->created_at}}</span>
+    <span class="badge badge-danger">created at: {{$post->created_at}}  By: {{$post->user->name}}</span>
+    <br>
     <a href="/posts/{{$post->id}}" type="button" class="btn btn-primary ">More</a>
 
 

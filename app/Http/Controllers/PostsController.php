@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 use App\Post;
 class PostsController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['index','show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +50,7 @@ class PostsController extends Controller
         $post->firstname=$request->get('firstname');
         $post->lastname=$request->get('lastname');
         $post->body=$request->get('body');
-        
+        $post->user_id=auth()->user()->id;
         $post->save();
         
         return redirect('posts')->with('success', 'Information has been added');
@@ -73,7 +80,14 @@ class PostsController extends Controller
     {
         //
         $post = \App\Post::find($id);
-        return view('posts.edit')->with('post',$post);;
+
+        if (auth()->user()->id !== $post->user_id){
+
+            return redirect('/posts')->with('erorr','not available');
+            
+        }
+        return view('posts.edit')->with('post',$post);
+        
     }
 
     /**
@@ -107,6 +121,11 @@ class PostsController extends Controller
     {
         //
         $post = \App\Post::find($id);
+        if (auth()->user()->id !== $post->user_id){
+
+            return redirect('/posts')->with('erorr','not available');
+            
+        }
         $post->delete();
         return redirect('posts')->with('success','Information has been  deleted');
     }
